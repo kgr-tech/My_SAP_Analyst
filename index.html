@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalluru Giresh Reddy | SAP CPI Consultant</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html#home" class="nav-logo">Giresh<span>.</span></a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="youtube.html" class="nav-link">YouTube</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero section" id="home">
+            <div class="hero-container container">
+                <div class="hero-avatar">
+                    <div class="avatar-ring">
+                        <img src="1000232434.jpg" alt="Kalluru Giresh Reddy">
+                    </div>
+                </div>
+
+                <div class="hero-content">
+                    <h2 class="hero-greeting">I'M <span>GIRESH REDDY</span></h2>
+                    <h3 class="hero-role">SAP CPI CONSULTANT</h3>
+
+                    <div class="hero-socials">
+                        <a href="https://github.com/kgr-tech" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/kalluru-giresh-reddy/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://g.dev/giresh19reddy" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Google Developer"><i class="fa-brands fa-google"></i></a>
+                        <a href="youtube.html" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="documents/Kalluru-Giresh-Reddy-Resume.pdf" class="btn btn-outline" download>
+                            <i class="fa-solid fa-file-arrow-down"></i> Download Resume
+                        </a>
+                        <a href="documents/Kalluru-Giresh-Reddy-CV.pdf" class="btn btn-primary" download>
+                            <i class="fa-solid fa-file-lines"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects section" id="projects">
+            <div class="container">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle" id="projects-subtitle">Data, images, and links are imported live from GitHub (<code>kgr-tech</code> repos + <code>content.json</code>).</p>
+                <p class="source-pill" id="projects-source" hidden></p>
+                <div class="projects-grid" id="projects-grid"></div>
+            </div>
+        </section>
+
+        <section class="contact section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Me</h2>
+
+                <div class="contact-card">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" name="name" placeholder="Name" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Email" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Message" rows="5" class="form-input form-textarea" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container container">
+            <p class="copyright">&copy; 2026 Kalluru Giresh Reddy</p>
+            <div class="footer-socials">
+                <a href="https://github.com/kgr-tech" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/kalluru-giresh-reddy/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://g.dev/giresh19reddy" target="_blank" rel="noopener noreferrer" aria-label="Google Developer"><i class="fa-brands fa-google"></i></a>
+                <a href="youtube.html" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

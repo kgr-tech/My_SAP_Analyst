@@ -1,0 +1,28 @@
+{
+  "_guide": {
+    "projects": {
+      "title": "Project name",
+      "description": "Short case-study text",
+      "image": "content/images/screenshot.jpg",
+      "docUrl": "https://docs.google.com/document/d/...",
+      "codeUrl": "https://github.com/kgr-tech/repo-name",
+      "links": [{ "label": "Demo", "url": "https://..." }]
+    },
+    "youtube": {
+      "title": "Video title",
+      "url": "https://youtu.be/VIDEO_ID?si=SHARE_CODE"
+    }
+  },
+  "github": {
+    "owner": "kgr-tech",
+    "contentRepo": "portfolio",
+    "pages": "https://kgr-tech.github.io/portfolio/",
+    "branch": "main",
+    "importRepos": true,
+    "excludeRepos": [
+      "100-Days-of-Code---The-Complete-Python-Pro-Bootcamp"
+    ]
+  },
+  "projects": [],
+  "youtube": []
+}
