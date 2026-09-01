@@ -177,12 +177,21 @@ code {
 /* ============================================
    Buttons
    ============================================ */
+
+/* Register property for smooth angle animation */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 28px;
-  border-radius: var(--radius-sm);
+  border-radius: 100px;
   font-family: var(--font-family);
   font-size: 0.9rem;
   font-weight: 600;
@@ -190,6 +199,14 @@ code {
   border: none;
   transition: all var(--transition);
   text-decoration: none;
+  position: relative;
+  overflow: visible;
+}
+
+.btn > span {
+  position: relative;
+  z-index: 10;
+  transition: 0.25s ease;
 }
 
 .btn-primary {
@@ -199,6 +216,30 @@ code {
   box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
 }
 
+.btn-primary::before,
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background-color: inherit;
+  border-radius: inherit;
+  background-image: conic-gradient(
+    from var(--angle) at 50% 50%,
+    transparent 0%,
+    transparent 33%,
+    var(--accent-light) 50%,
+    transparent 66%,
+    transparent 100%
+  );
+  animation: rotate 2s linear infinite;
+  z-index: -1;
+}
+
+.btn-primary::after {
+  filter: blur(16px);
+  z-index: -2;
+}
+
 .btn-primary:hover {
   background: var(--accent-light);
   box-shadow: 0 6px 28px rgba(0, 242, 254, 0.45);
@@ -206,15 +247,47 @@ code {
 }
 
 .btn-outline {
-  background: transparent;
+  background: #0f1115;
   color: var(--accent-light);
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid transparent;
+}
+
+.btn-outline::before,
+.btn-outline::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background-color: inherit;
+  border-radius: inherit;
+  background-image: conic-gradient(
+    from var(--angle) at 50% 50%,
+    transparent 0%,
+    transparent 33%,
+    var(--accent) 50%,
+    transparent 66%,
+    transparent 100%
+  );
+  animation: rotate 2s linear infinite;
+  z-index: -1;
+}
+
+.btn-outline::after {
+  filter: blur(16px);
+  z-index: -2;
 }
 
 .btn-outline:hover {
   background: var(--accent-glow);
-  border-color: var(--accent-light);
   transform: translateY(-2px);
+}
+
+@keyframes rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
 }
 
 .btn-block {
