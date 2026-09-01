@@ -269,13 +269,20 @@ function formatRepoName(name) {
 }
 
 // ── YouTube ───────────────────────────────────
+const DEFAULT_YOUTUBE_VIDEOS = [
+  { id: "TYEJv1fXeLE", title: "SAP APIM - Tutorial Part 1" },
+  { id: "ktWSpxzVIvU", title: "SAP APIM - Tutorial Part 2" }
+];
+
 async function loadYouTube() {
   if (!youtubeGrid) return;
 
-  youtubeGrid.innerHTML = `<div class="loading-spinner">Scanning GitHub for YouTube links…</div>`;
+  youtubeGrid.innerHTML = `<div class="loading-spinner">Loading YouTube videos…</div>`;
 
-  const videoIds = new Set();
-  let source = "";
+  const videoMap = new Map();
+  // Pre-load default APIM videos
+  DEFAULT_YOUTUBE_VIDEOS.forEach((v) => videoMap.set(v.id, v.title));
+  let source = "SAP APIM Tutorials";
 
   try {
     // 1. Try content.json from the portfolio repo
@@ -284,9 +291,14 @@ async function loadYouTube() {
       if (res.ok) {
         const data = await res.json();
         if (Array.isArray(data.youtube)) {
-          data.youtube.forEach((url) => {
-            const id = extractYouTubeId(url);
-            if (id) videoIds.add(id);
+          data.youtube.forEach((item) => {
+            if (typeof item === "string") {
+              const id = extractYouTubeId(item);
+              if (id && !videoMap.has(id)) videoMap.set(id, "YouTube Video");
+            } else if (item && typeof item === "object" && (item.id || item.url)) {
+              const id = item.id || extractYouTubeId(item.url);
+              if (id) videoMap.set(id, item.title || "YouTube Video");
+            }
           });
         }
       }
@@ -310,45 +322,49 @@ async function loadYouTube() {
             const matches = text.matchAll(
               /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([a-zA-Z0-9_-]{11})/g
             );
-            for (const m of matches) videoIds.add(m[1]);
+            for (const m of matches) {
+              if (!videoMap.has(m[1])) {
+                videoMap.set(m[1], `Video from ${formatRepoName(repo.name)}`);
+              }
+            }
           } catch { /* skip */ }
         });
       await Promise.all(readmePromises);
     }
 
-    source = `📡 Found ${videoIds.size} video${videoIds.size !== 1 ? "s" : ""} from GitHub`;
+    source = `📡 Loaded ${videoMap.size} video${videoMap.size !== 1 ? "s" : ""}`;
   } catch (err) {
-    console.warn("YouTube scan failed:", err);
+    console.warn("YouTube scan failed, using default videos:", err);
   }
 
-  if (videoIds.size === 0) {
+  if (videoMap.size === 0) {
     youtubeGrid.innerHTML = `<div class="error-message">No YouTube videos found yet. Add <code>youtu.be</code> links to your repo READMEs or a <code>youtube</code> array in <code>content.json</code>.</div>`;
     showSourcePill(youtubeSource, "No videos found");
     return;
   }
 
   showSourcePill(youtubeSource, source);
-  renderYouTube([...videoIds]);
+  renderYouTube([...videoMap.entries()].map(([id, title]) => ({ id, title })));
 }
 
-function renderYouTube(ids) {
+function renderYouTube(videos) {
   youtubeGrid.innerHTML = "";
 
-  ids.forEach((id, i) => {
+  videos.forEach((video, i) => {
     const card = document.createElement("div");
     card.className = "youtube-card fade-in";
     card.style.transitionDelay = `${i * 0.08}s`;
 
     card.innerHTML = `
       <iframe
-        src="https://www.youtube.com/embed/${id}"
-        title="YouTube video"
+        src="https://www.youtube.com/embed/${video.id}"
+        title="${video.title}"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
         loading="lazy"
       ></iframe>
       <div class="youtube-card-info">
-        <p class="youtube-card-title"><i class="fa-brands fa-youtube"></i> YouTube Video</p>
+        <p class="youtube-card-title"><i class="fa-brands fa-youtube"></i> ${video.title}</p>
       </div>
     `;
 
