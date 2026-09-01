@@ -402,5 +402,7 @@ if (contactForm) {
 document.addEventListener("DOMContentLoaded", () => {
   loadProjects();
   loadYouTube();
+  initStatCounters();
+  initSkillBars();
   initFadeIn();
 });
