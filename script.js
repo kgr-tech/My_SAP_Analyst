@@ -168,27 +168,12 @@ async function loadProjects() {
     if (!res.ok) throw new Error(`GitHub API ${res.status}`);
     const allRepos = await res.json();
 
-    // Define allowed projects
-    const allowedProjects = [
-      'SAP-CPI-Analyst',
-      'My_SAP_Analyst', 
-      'Streak',
-      'HabitEarn',
-      'Vibechain',
-      'AIKiro',
-      'fitin-AI'
-    ];
-
-    // Filter to show only specified projects
+    // Filter out profile repo, forks, and the portfolio repo itself
     repos = allRepos.filter(
       (r) =>
         !r.fork &&
         r.name !== GITHUB_USER &&
-        r.name.toLowerCase() !== GITHUB_USER.toLowerCase() &&
-        allowedProjects.some(allowed => 
-          r.name.toLowerCase() === allowed.toLowerCase() ||
-          r.name.toLowerCase().includes(allowed.toLowerCase())
-        )
+        r.name.toLowerCase() !== GITHUB_USER.toLowerCase()
     );
 
     source = `📡 Live from GitHub · ${repos.length} repos`;
