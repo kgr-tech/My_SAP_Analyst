@@ -1,0 +1,26 @@
+{
+  "profile": {
+    "name": "Kalluru Giresh Reddy",
+    "title": "Data Analyst & Data Engineer",
+    "location": "Hyderabad, Telangana",
+    "email": "your.email@gmail.com"
+  },
+  "skills": [
+    "SQL", "Python", "Snowflake", "Google Cloud Platform (GCP)", 
+    "Vertex AI", "AWS", "Power BI", "Tableau", "Streamlit"
+  ],
+  "projects": [
+    {
+      "title": "Kiro Fitfin sync",
+      "description": "A comprehensive platform integrating holistic data metrics. Built with modern data infrastructure to ensure seamless synchronization and analytics."
+    },
+    {
+      "title": "GreenResolv AI",
+      "description": "An advanced technical deployment designed for the BNB Marathon. Features complex documentation schema and AI-driven resolution architecture."
+    },
+    {
+      "title": "AI Analyst for Startup Evolution",
+      "description": "Award-winning Google Hackathon project engineered to provide automated analytics and strategic growth insights for emerging startups."
+    }
+  ]
+}
