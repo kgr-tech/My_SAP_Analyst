@@ -364,20 +364,23 @@ code {
   position: absolute;
   right: 8px;
   bottom: 8px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: var(--bg-card);
-  border: 2px solid var(--accent);
-  color: var(--accent-light);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: 0 2px 12px rgba(0, 242, 254, 0.3);
+  padding: 8px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   z-index: 2;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
 }
 
+.avatar-badge.google-logo svg {
+  width: 20px;
+  height: 20px;
+}
 .avatar-camera {
   position: absolute;
   right: 12px;
