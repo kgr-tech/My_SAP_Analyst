@@ -119,11 +119,10 @@ code {
 }
 
 .header.scrolled {
-  background: rgba(15, 17, 21, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 10, 18, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.4);
 }
 
 .nav {
@@ -150,30 +149,21 @@ code {
 }
 
 .nav-link {
-  padding: 10px 20px;
-  border-radius: 12px;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all var(--transition);
+  transition: color var(--transition), background var(--transition);
 }
 
 .nav-link:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(0, 242, 254, 0.3);
-  transform: translateY(-2px);
 }
 
 .nav-link.active {
   color: var(--accent-light);
-  background: rgba(0, 242, 254, 0.15);
-  border-color: var(--accent);
-  box-shadow: 0 4px 15px rgba(0, 242, 254, 0.2);
+  background: var(--accent-glow);
 }
 
 .nav-toggle {
