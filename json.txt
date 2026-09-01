@@ -1,13 +1,13 @@
 {
   "profile": {
     "name": "Kalluru Giresh Reddy",
-    "title": "Data Analyst & Data Engineer",
+    "title": "SAP CPI Analyst",
     "location": "Hyderabad, Telangana",
-    "email": "your.email@gmail.com"
+    "email": "giresh19reddy@gmail.com"
   },
   "skills": [
-    "SQL", "Python", "Snowflake", "Google Cloud Platform (GCP)", 
-    "Vertex AI", "AWS", "Power BI", "Tableau", "Streamlit"
+    "SQL", "Python","Google Cloud Platform (GCP)", 
+    "AWS", "Streamlit"
   ],
   "projects": [
     {
