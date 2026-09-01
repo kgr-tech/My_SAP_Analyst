@@ -384,17 +384,31 @@ function extractYouTubeId(url) {
 
 // ── Contact Form ──────────────────────────────
 if (contactForm) {
-  contactForm.addEventListener("submit", (e) => {
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formData = new FormData(contactForm);
     const name = formData.get("name");
 
-    // In production, replace with a real endpoint (e.g., Formspree, EmailJS, etc.)
-    // Example: fetch("https://formspree.io/f/YOUR_ID", { method: "POST", body: formData });
+    // Send to Formspree - they will forward to your email
+    try {
+      const response = await fetch("https://formspree.io/f/xoeqdqbw", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-    showToast(`Thanks ${name}! Your message has been received. 🎉`);
-    contactForm.reset();
+      if (response.ok) {
+        showToast(`Thanks ${name}! Your message has been sent. 🎉`);
+        contactForm.reset();
+      } else {
+        showToast(`Sorry, there was an error. Please email directly at giresh19reddy@gmail.com`);
+      }
+    } catch (error) {
+      showToast(`Sorry, there was an error. Please email directly at giresh19reddy@gmail.com`);
+    }
   });
 }
 
