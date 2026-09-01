@@ -172,11 +172,8 @@ async function loadProjects() {
     const allowedProjects = [
       'SAP-CPI-Analyst',
       'My_SAP_Analyst',
-      'Streak',
       'HabitEarn',
-      'Vibechain',
-      'AIKiro',
-      'fitin-AI'
+      'Vibechain'
     ];
 
     // Filter to show only specified projects
